@@ -1,5 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/Home.vue'
+import AboutView from '../views/AboutView.vue'
+import AllProductsView from '../views/AllProducts.vue'
+import FireTVView from '../views/ProductPages/FireTV.vue'
+import PedestalFanView from '../views/ProductPages/Office/PedestalFan.vue'
+import GatoradeBottleView from '../views/ProductPages/Outdoors/GatoradeBottle.vue'
+import PS5View from '../views/ProductPages/VideoGames/PS5.vue'
 
 const routes = [
   {
@@ -10,10 +16,32 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: AboutView
+  },
+  {
+    path: '/all',
+    name: 'allproducts',
+    component: AllProductsView
+  },
+  {
+    path: '/firetv',
+    name: 'firetv',
+    component: FireTVView
+  },
+  {
+    path: '/pedestalfan',
+    name: 'pedestalfan',
+    component: PedestalFanView
+  },
+  {
+    path: '/gatoradebottle',
+    name: 'gatoradebottle',
+    component: GatoradeBottleView
+  },
+  {
+    path: '/ps5',
+    name: 'ps5',
+    component: PS5View
   }
 ]
 
