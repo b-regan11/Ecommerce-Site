@@ -3,7 +3,7 @@
       <h1>All Products</h1>
       
       <a href="/firetv">
-        <img src="../assets/ProductImages/FireTV.jpg" alt="Amazon Fire TV" style="width: 400px">
+        <img src="../assets/ProductImages/Electronics/FireTV.jpg" alt="Amazon Fire TV" style="width: 400px">
       </a>
       <br>
       <h2>Amazon Fire TV</h2>
@@ -11,7 +11,7 @@
       <br>
 
       <a href="/gatoradebottle">
-        <img src="../assets/ProductImages/GatoradeBottle.jpg" alt="Gatorade Bottle" style="width: 100px">
+        <img src="../assets/ProductImages/Outdoors/GatoradeBottle.jpg" alt="Gatorade Bottle" style="width: 100px">
       </a>
       <br>
       <h2>Gatorade Bottle</h2>
@@ -19,7 +19,7 @@
       <br>
 
       <a href="/pedestalfan">
-        <img src="../assets/ProductImages/PedestalFan.jpg" alt="Pedestal Fan" style="width: 200px">
+        <img src="../assets/ProductImages/Office/PedestalFan.jpg" alt="Pedestal Fan" style="width: 200px">
       </a>
       <br>
       <h2>Pedestal Fan</h2>
@@ -27,7 +27,7 @@
       <br>
 
       <a href="/ps5">
-        <img src="../assets/ProductImages/PS5.jpg" alt="Playstation 5 Bundle" style="width: 200px">
+        <img src="../assets/ProductImages/VideoGames/PS5.jpg" alt="Playstation 5 Bundle" style="width: 200px">
       </a>
       <h2>Playstation 5 w/ Spiderman 2 Bundle</h2>
       <p>Bundle includes Marvels Spider-Man 2 full game digital voucher.</p>
