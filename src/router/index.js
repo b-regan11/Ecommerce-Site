@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Home.vue'
 import AboutView from '../views/AboutView.vue'
 import AllProductsView from '../views/AllProducts.vue'
+import SearchResultsView from '../views/SearchResults.vue'
 import FireTVView from '../views/ProductPages/Electronics/FireTV.vue'
 import PedestalFanView from '../views/ProductPages/Office/PedestalFan.vue'
 import GatoradeBottleView from '../views/ProductPages/Outdoors/GatoradeBottle.vue'
@@ -22,6 +23,11 @@ const routes = [
     path: '/all',
     name: 'allproducts',
     component: AllProductsView
+  },
+  {
+    path: '/results',
+    name: 'results',
+    component: SearchResultsView
   },
   {
     path: '/firetv',

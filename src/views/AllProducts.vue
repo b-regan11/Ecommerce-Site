@@ -1,6 +1,8 @@
 <template>
     <div class="allproducts">
-      <h1>All Products</h1>
+      <h1>ShopZone.com</h1>
+      <br>
+      <h2>All Products</h2>
       
       <a href="/firetv">
         <img src="../assets/ProductImages/Electronics/FireTV.jpg" alt="Amazon Fire TV" style="width: 400px">
