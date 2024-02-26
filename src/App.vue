@@ -6,12 +6,12 @@
     <router-link to="/all">Products</router-link> |
   </nav>
   <!-- Search Bar Component -->
-  <input type="text" v-model="input" placeholder="Search fruits..."/>
-  <div class="item fruit" v-for="fruit in filteredList()" :key="fruit">
-    <p>{{ fruit }}</p>
+  <input type="text" v-model="input" placeholder="Search ..."/>
+  <div class="item product" v-for="product in filteredList()" :key="product">
+    <a :href="product.path"><p>{{ product.name }}</p></a>
   </div>
   <div class="item error" v-if="input&&!filteredList().length">
-    <p>No results found!</p>
+    <p>No Results Found</p>
   </div>
   <router-view/>
 </template>
@@ -20,11 +20,17 @@
 <script setup>
 import { ref } from "vue";
 let input = ref("");
-const fruits = ["apple", "banana", "orange"];
+const products = [
+  { name: "Amazon Fire TV", path: "/firetv"},
+  { name: "Gatorade Bottle", path: "/gatoradebottle"},
+  { name: "Pedestal Fan", path: "pedestalfan"},
+  { name: "Playstation 5", path: "/PS5"}
+]
 function filteredList() {
-  return fruits.filter((fruit) =>
-    fruit.toLowerCase().includes(input.value.toLowerCase())
+  const slicedProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(input.value.toLowerCase())
     );
+  return slicedProducts.slice(0, 3);
 }
 </script>
 
@@ -68,9 +74,31 @@ input {
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.fruit {
+.item a {
+  color: hotpink;
+  text-decoration: none;
+}
+
+.product {
   background-color: rgb(97, 62, 252);
   cursor: pointer;
+}
+
+.item a:hover {
+  text-decoration: none;
+  font-weight: bolder;
+  color: navy;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: rgb(248, 216, 245);
+  border-radius: 25px;
+  color: orange;
+  text-decoration: none;
 }
 
 .error {

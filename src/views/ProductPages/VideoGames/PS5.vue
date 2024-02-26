@@ -1,7 +1,7 @@
 <template>
     <div class="ps5">
         <br>
-        <h1>Pedestal Fan</h1>
+        <h1>Playstation 5 w/ Spiderman 2 Bundle</h1>
         <a href="">
             <img src="../../../assets/ProductImages/VideoGames/PS5.jpg" alt="Playstation 5 Bundle" style="width: 300px">
         </a>
