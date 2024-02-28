@@ -5,6 +5,10 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/all">Products</router-link> |
   </nav>
+
+  <!-- Search Bar Button Component -->
+  <button @click="onButtonClick">Search</button>
+
   <!-- Search Bar Component -->
   <input type="text" v-model="input" placeholder="Search ..."/>
   <div class="item product" v-for="product in filteredList()" :key="product">
@@ -31,6 +35,11 @@ function filteredList() {
     product.name.toLowerCase().includes(input.value.toLowerCase())
     );
   return slicedProducts.slice(0, 3);
+}
+// Search Bar Button Component
+function onButtonClick() {
+  //alert('Button clicked!');
+  window.location.href = "/results"; 
 }
 </script>
 
