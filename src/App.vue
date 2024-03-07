@@ -10,7 +10,7 @@
   <button @click="onButtonClick">Search</button>
 
   <!-- Search Bar Component -->
-  <input type="text" v-model="input" placeholder="Search ..."/>
+  <input type="text" v-model="input" placeholder="Search ..." @keyup.enter="onButtonClick"/>
   <div class="item product" v-for="product in filteredList()" :key="product">
     <a :href="product.path"><p>{{ product.name }}</p></a>
   </div>
@@ -51,6 +51,7 @@ import router from "@/router";
 function onButtonClick() {
 // set item / route to results page
 sessionStorage.setItem("products", JSON.stringify(products)); // products
+sessionStorage.setItem("searchInput", JSON.stringify(input.value)); // search input
   router.push({
     name: "results", 
   });
