@@ -9,47 +9,15 @@ import GatoradeBottleView from '../views/ProductPages/Outdoors/GatoradeBottle.vu
 import PS5View from '../views/ProductPages/VideoGames/PS5.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: AboutView
-  },
-  {
-    path: '/all',
-    name: 'allproducts',
-    component: AllProductsView
-  },
-  {
-    path: '/results',
-    name: 'results',
-    component: SearchResultsView
-  },
-  {
-    path: '/firetv',
-    name: 'firetv',
-    component: FireTVView
-  },
-  {
-    path: '/pedestalfan',
-    name: 'pedestalfan',
-    component: PedestalFanView
-  },
-  {
-    path: '/gatoradebottle',
-    name: 'gatoradebottle',
-    component: GatoradeBottleView
-  },
-  {
-    path: '/ps5',
-    name: 'ps5',
-    component: PS5View
-  }
-]
+  { path: '/', name: 'home', component: HomeView },
+  { path: '/about', name: 'about', component: AboutView },
+  { path: '/all', name: 'allproducts', component: AllProductsView },
+  { path: '/results', name: 'results', component: SearchResultsView, props: true },
+  { path: '/firetv', name: 'firetv', component: FireTVView },
+  { path: '/pedestalfan', name: 'pedestalfan', component: PedestalFanView },
+  { path: '/gatoradebottle', name: 'gatoradebottle', component: GatoradeBottleView },
+  { path: '/ps5', name: 'ps5', component: PS5View }
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

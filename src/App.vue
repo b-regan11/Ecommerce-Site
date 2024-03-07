@@ -36,10 +36,24 @@ function filteredList() {
     );
   return slicedProducts.slice(0, 3);
 }
+
+function unfilteredList() {
+  const unslicedProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(input.value.toLowerCase())
+    );
+  return unslicedProducts;
+}
+
+
 // Search Bar Button Component
+import router from "@/router";
+
 function onButtonClick() {
-  //alert('Button clicked!');
-  window.location.href = "/results"; 
+// set item / route to results page
+sessionStorage.setItem("products", JSON.stringify(products)); // products
+  router.push({
+    name: "results", 
+  });
 }
 </script>
 
