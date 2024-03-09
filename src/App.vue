@@ -25,23 +25,16 @@
 import { ref } from "vue";
 let input = ref("");
 const products = [
-  { name: "Amazon Fire TV", path: "/firetv"},
-  { name: "Gatorade Bottle", path: "/gatoradebottle"},
-  { name: "Pedestal Fan", path: "pedestalfan"},
-  { name: "Playstation 5", path: "/PS5"}
+  { name: "Amazon Fire TV", path: "/firetv", description: "Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.", imagePath: "/ProductImages/Electronics/FireTV.jpg", imageAlt: "Amazon Fire TV"},
+  { name: "Gatorade Bottle", path: "/gatoradebottle", description: "Fuel your game with Gatorades new customizable hydration platform.", imagePath: "/ProductImages/Outdoors/GatoradeBottle.jpg", imageAlt: "Gatorade Bottle"},
+  { name: "Pedestal Fan", path: "pedestalfan", description: "Standing pedestal dual-blade fan with wide oscillation for circulating air in medium to large rooms.", imagePath: "/ProductImages/Office/PedestalFan.jpg", imageAlt: "Pedestal Fan"},
+  { name: "Playstation 5", path: "/PS5", description: "Bundle includes Marvels Spider-Man 2 full game digital voucher.", imagePath: "/ProductImages/VideoGames/PS5.jpg", imageAlt: "Playstation 5 Bundle"}
 ]
 function filteredList() {
   const slicedProducts = products.filter((product) =>
     product.name.toLowerCase().includes(input.value.toLowerCase())
     );
   return slicedProducts.slice(0, 3);
-}
-
-function unfilteredList() {
-  const unslicedProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(input.value.toLowerCase())
-    );
-  return unslicedProducts;
 }
 
 
