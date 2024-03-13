@@ -9,7 +9,7 @@
       <div>
         <div v-for="(product, index) in filteredProducts" :key="index">
           <!-- Call Image Here-->
-          <a a :href="getProductLink(product)">
+          <a :href="getProductLink(product)">
             <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
           </a>
           <h4><a :href="getProductLink(product)">{{ product.name }}</a></h4>
@@ -35,7 +35,10 @@ export default {
   computed: {
     filteredProducts() {
       return this.products.filter((product) =>
-        product.name.toLowerCase().includes(this.filterKeyword.toLowerCase())
+        product.name.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
+        product.category.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
+        product.fullName.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
+        product.brand.toLowerCase().includes(this.filterKeyword.toLowerCase())
       );
     },
   },
@@ -61,4 +64,5 @@ export default {
 </script>
 
 <style>
+
 </style>
