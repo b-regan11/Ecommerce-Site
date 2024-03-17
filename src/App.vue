@@ -10,12 +10,22 @@
   <button @click="onButtonClick">Search</button>
 
   <!-- Search Bar Component -->
-  <input type="text" v-model="input" placeholder="Search ..." @keyup.enter="onButtonClick"/>
-  <div class="item product" v-for="product in filteredList()" :key="product">
-    <a :href="product.path"><p>{{ product.name }}</p></a>
-  </div>
-  <div class="item error" v-if="input&&!filteredList().length">
-    <p>No Results Found</p>
+  <div class="SearchBar">
+    <div class="SearchBarInput">
+      <input type="text" v-model="input" placeholder="Search ..." @keyup.enter="onButtonClick"/>
+    </div>
+    <div class="SearchBarResults">
+      <div v-if="input.trim()">
+        <div class="item product" v-for="product in filteredList()" :key="product">
+          <a :href="product.path"><p>{{ product.name }}</p></a>
+        </div>
+        <div class="item error" v-if="input&&!filteredList().length">
+          <p>No Results Found</p>
+          <!--<br><br><br><br><br>-->
+        </div>
+      </div>
+      <div class="item empty" v-if="!input.trim()"></div>
+    </div>
   </div>
   <router-view/>
 </template>
@@ -135,15 +145,15 @@ input {
   text-decoration: none;
 }
 
-.product {
-  background-color: rgb(97, 62, 252);
-  cursor: pointer;
-}
-
 .item a:hover {
   text-decoration: none;
   font-weight: bolder;
   color: navy;
+}
+
+.product {
+  background-color: rgb(97, 62, 252);
+  cursor: pointer;
 }
 
 a {
@@ -159,5 +169,9 @@ a:hover {
 
 .error {
   background-color: tomato;
+}
+
+.empty {
+  display: none;
 }
 </style>
