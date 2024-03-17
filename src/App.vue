@@ -25,15 +25,54 @@
 import { ref } from "vue";
 let input = ref("");
 const products = [
-  { name: "Amazon Fire TV", path: "/firetv", description: "Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.", imagePath: "/ProductImages/Electronics/FireTV.jpg", imageAlt: "Amazon Fire TV"},
-  { name: "Gatorade Bottle", path: "/gatoradebottle", description: "Fuel your game with Gatorades new customizable hydration platform.", imagePath: "/ProductImages/Outdoors/GatoradeBottle.jpg", imageAlt: "Gatorade Bottle"},
-  { name: "Pedestal Fan", path: "pedestalfan", description: "Standing pedestal dual-blade fan with wide oscillation for circulating air in medium to large rooms.", imagePath: "/ProductImages/Office/PedestalFan.jpg", imageAlt: "Pedestal Fan"},
-  { name: "Playstation 5", path: "/PS5", description: "Bundle includes Marvels Spider-Man 2 full game digital voucher.", imagePath: "/ProductImages/VideoGames/PS5.jpg", imageAlt: "Playstation 5 Bundle"}
+  { 
+    name: "Amazon Fire TV", 
+    fullName: "Amazon Fire TV 50 inch 4-Series 4K UHD smart TV, stream live TV without cable",
+    brand: "Amazon",
+    category: "electronics",
+    path: "/firetv", 
+    description: "Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.", 
+    imagePath: "/ProductImages/Electronics/FireTV.jpg", 
+    imageAlt: "Amazon Fire TV"
+  },
+  { 
+    name: "Gatorade Bottle", 
+    fullName: "Gatorade Gx, Marble Blue, 30 Oz",
+    brand: "Gatorade",
+    category: "outdoors",
+    path: "/gatoradebottle", 
+    description: "Fuel your game with Gatorades new customizable hydration platform.", 
+    imagePath: "/ProductImages/Outdoors/GatoradeBottle.jpg", 
+    imageAlt: "Gatorade Bottle"
+  },
+  { 
+    name: "Pedestal Fan", 
+    fullName: "Amazon Basics Oscillating Dual Blade Standing Pedestal Fan with Remote, 16-Inch, Black",
+    brand: "Amazon",
+    category: "office",
+    path: "pedestalfan", 
+    description: "Standing pedestal dual-blade fan with wide oscillation for circulating air in medium to large rooms.", 
+    imagePath: "/ProductImages/Office/PedestalFan.jpg", 
+    imageAlt: "Pedestal Fan"
+  },
+  { 
+    name: "Playstation 5", 
+    fullName: "PlayStation 5 Digital Edition Slim",
+    brand: "Sony",
+    category: "videogames",
+    path: "/PS5", 
+    description: "Bundle includes Marvels Spider-Man 2 full game digital voucher.", 
+    imagePath: "/ProductImages/VideoGames/PS5.jpg", 
+    imageAlt: "Playstation 5 Bundle"
+  }
 ]
 function filteredList() {
   const slicedProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(input.value.toLowerCase())
-    );
+  product.name.toLowerCase().includes(input.value.toLowerCase()) ||
+    product.category.toLowerCase().includes(input.value.toLowerCase()) ||
+    product.fullName.toLowerCase().includes(input.value.toLowerCase()) ||
+    product.brand.toLowerCase().includes(input.value.toLowerCase())
+  );
   return slicedProducts.slice(0, 3);
 }
 

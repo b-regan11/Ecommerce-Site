@@ -35,8 +35,12 @@ export default {
   computed: {
     filteredProducts() {
       return this.products.filter((product) =>
-        product.name.toLowerCase().includes(this.filterKeyword.toLowerCase())
+        product.name.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
+        product.category.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
+        product.fullName.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
+        product.brand.toLowerCase().includes(this.filterKeyword.toLowerCase())
       );
+        
     },
   },
   methods: {
