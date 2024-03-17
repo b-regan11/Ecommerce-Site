@@ -169,6 +169,7 @@ a:hover {
 
 .error {
   background-color: tomato;
+  display: none;
 }
 
 .empty {

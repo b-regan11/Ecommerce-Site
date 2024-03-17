@@ -2,6 +2,7 @@
   <div class="results">
     <h1>ShopZone.com</h1>
     <br>
+    <h5>{{ filteredProducts.length }} results for "{{ filterKeyword }}"</h5>
     <h2>Search Results</h2>
 
     <div v-if="filteredProducts && filteredProducts.length > 0">
