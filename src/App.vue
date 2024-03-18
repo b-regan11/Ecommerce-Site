@@ -7,26 +7,33 @@
   </nav>
 
   <!-- Search Bar Button Component -->
-  <button @click="onButtonClick">Search</button>
-
-  <!-- Search Bar Component -->
-  <div class="SearchBar">
-    <div class="SearchBarInput">
-      <input type="text" v-model="input" placeholder="Search ..." @keyup.enter="onButtonClick"/>
+  <div class="SearchComponents">
+    <div class="SearchButton">
+      <button @click="onButtonClick">Search</button>
     </div>
-    <div class="SearchBarResults">
-      <div v-if="input.trim()">
-        <div class="item product" v-for="product in filteredList()" :key="product">
-          <a :href="product.path"><p>{{ product.name }}</p></a>
+
+    <!-- Search Bar Component -->
+    <div class="SearchBar">
+        <div class="SearchBarInput">
+          <input type="text" v-model="input" placeholder="Search ..." @keyup.enter="onButtonClick"/>
         </div>
-        <div class="item error" v-if="input&&!filteredList().length">
-          <p>No Results Found</p>
-          <!--<br><br><br><br><br>-->
+      <div class="SearchBarResults">
+        <div v-if="input.trim()">
+          <div class="item product" v-for="product in filteredList()" :key="product">
+            <a :href="product.path"><p>{{ product.name }}</p></a>
+          </div>
+          <div class="item error" v-if="input&&!filteredList().length">
+            <p>No Results Found</p>
+            <!--<br><br><br><br><br>-->
+          </div>
         </div>
+        <div class="item empty" v-if="!input.trim()"></div>
       </div>
-      <div class="item empty" v-if="!input.trim()"></div>
     </div>
   </div>
+  
+
+  
   <router-view/>
 </template>
 
@@ -119,7 +126,7 @@ body {
 input {
   display: block;
   width: 350 px;
-  margin: 20px auto;
+  margin-left: auto;
   padding: 10px 45px;
   background: white url("assets/search-icon.svg") no-repeat 15px center;
   background-size: 15px 15px;
@@ -154,6 +161,7 @@ input {
 .product {
   background-color: rgb(97, 62, 252);
   cursor: pointer;
+  float: right;
 }
 
 a {
@@ -168,11 +176,42 @@ a:hover {
 }
 
 .error {
-  background-color: tomato;
   display: none;
 }
 
 .empty {
   display: none;
+}
+
+.SearchBarComponents {
+  width: 100%;
+  position: relative;
+}
+
+.SearchButton {
+  width: 60%;
+  height: 50px;
+  float: right;
+  
+}
+
+.SearchBar {
+  position: relative;
+  width: 40%;
+  height: 50px;
+  float: left;
+  
+}
+
+.SearchBarResults {
+  position: absolute;
+  top: calc(100% - 0px); 
+  left: 100%;
+  transform: translateX(-50%);
+  width: calc(100% + 100px);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 9999;
+  background-color:teal ;
 }
 </style>
