@@ -10,7 +10,7 @@
       <div>
         <div v-for="(product, index) in filteredProducts" :key="index">
           <!-- Call Image Here-->
-          <a a :href="getProductLink(product)">
+          <a :href="getProductLink(product)">
             <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
           </a>
           <h4><a :href="getProductLink(product)">{{ product.name }}</a></h4>

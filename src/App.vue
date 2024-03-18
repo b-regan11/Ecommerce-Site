@@ -105,6 +105,13 @@ sessionStorage.setItem("searchInput", JSON.stringify(input.value)); // search in
     name: "results", 
   });
 }
+
+let isDropdownVisible = ref(false);
+
+function toggleDropdown() {
+  isDropdownVisible.value = !isDropdownVisible.value;
+}
+
 </script>
 
 <style>
