@@ -50,7 +50,8 @@ const products = [
     path: "/firetv", 
     description: "Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.", 
     imagePath: "/ProductImages/Electronics/FireTV.jpg", 
-    imageAlt: "Amazon Fire TV"
+    imageAlt: "Amazon Fire TV",
+    price: 450
   },
   { 
     name: "Gatorade Bottle", 
@@ -60,7 +61,8 @@ const products = [
     path: "/gatoradebottle", 
     description: "Fuel your game with Gatorades new customizable hydration platform.", 
     imagePath: "/ProductImages/Outdoors/GatoradeBottle.jpg", 
-    imageAlt: "Gatorade Bottle"
+    imageAlt: "Gatorade Bottle",
+    price: 25
   },
   { 
     name: "Pedestal Fan", 
@@ -70,7 +72,8 @@ const products = [
     path: "pedestalfan", 
     description: "Standing pedestal dual-blade fan with wide oscillation for circulating air in medium to large rooms.", 
     imagePath: "/ProductImages/Office/PedestalFan.jpg", 
-    imageAlt: "Pedestal Fan"
+    imageAlt: "Pedestal Fan",
+    price: 50
   },
   { 
     name: "Playstation 5", 
@@ -80,7 +83,8 @@ const products = [
     path: "/PS5", 
     description: "Bundle includes Marvels Spider-Man 2 full game digital voucher.", 
     imagePath: "/ProductImages/VideoGames/PS5.jpg", 
-    imageAlt: "Playstation 5 Bundle"
+    imageAlt: "Playstation 5 Bundle",
+    price: 450
   }
 ]
 function filteredList() {

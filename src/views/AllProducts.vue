@@ -12,6 +12,7 @@
         </a>
         <h4><a :href="getProductLink(product)">{{ product.name }}</a></h4>
         <p>{{ product.description }}</p>
+        <p>$ {{ product.price }}</p>
       </div>
     </div>
   </div>
