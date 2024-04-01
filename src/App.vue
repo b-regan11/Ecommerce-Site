@@ -3,7 +3,7 @@
   <nav>
     <router-link to="/about">About</router-link> |
     <router-link to="/">Home</router-link> |
-    <router-link to="/all">Products</router-link> |
+    <router-link to="/all">Products</router-link> | 
   </nav>
 
   <!-- Search Bar Button Component -->
@@ -31,18 +31,18 @@
       </div>
     </div>
   </div>
-  
-
-  
   <router-view/>
 </template>
 
 <!-- Search Bar Component -->
 <script setup>
+
 import { ref } from "vue";
+
 let input = ref("");
 const products = [
   { 
+    id: 1,
     name: "Amazon Fire TV", 
     fullName: "Amazon Fire TV 50 inch 4-Series 4K UHD smart TV, stream live TV without cable",
     brand: "Amazon",
@@ -54,6 +54,7 @@ const products = [
     price: 450
   },
   { 
+    id: 2,
     name: "Gatorade Bottle", 
     fullName: "Gatorade Gx, Marble Blue, 30 Oz",
     brand: "Gatorade",
@@ -65,6 +66,7 @@ const products = [
     price: 25
   },
   { 
+    id: 3,
     name: "Pedestal Fan", 
     fullName: "Amazon Basics Oscillating Dual Blade Standing Pedestal Fan with Remote, 16-Inch, Black",
     brand: "Amazon",
@@ -76,6 +78,7 @@ const products = [
     price: 50
   },
   { 
+    id: 4,
     name: "Playstation 5", 
     fullName: "PlayStation 5 Digital Edition Slim",
     brand: "Sony",
@@ -100,6 +103,7 @@ function filteredList() {
 
 // Search Bar Button Component
 import router from "@/router";
+import Cart from './components/Cart.vue';
 
 function onButtonClick() {
 // set item / route to results page
