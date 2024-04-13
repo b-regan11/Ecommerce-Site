@@ -3,7 +3,7 @@
   <nav>
     <router-link to="/about">About</router-link> |
     <router-link to="/">Home</router-link> |
-    <router-link to="/all">Products</router-link> | 
+    <router-link to="/all">Products</router-link> |
   </nav>
 
   <!-- Search Bar Button Component -->
@@ -100,10 +100,8 @@ function filteredList() {
   return slicedProducts.slice(0, 3);
 }
 
-
 // Search Bar Button Component
 import router from "@/router";
-import Cart from './components/Cart.vue';
 
 function onButtonClick() {
 // set item / route to results page
