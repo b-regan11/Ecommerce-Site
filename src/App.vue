@@ -4,6 +4,8 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/">Home</router-link> |
     <router-link to="/all">Products</router-link> |
+    <router-link to="/TEST_Home">Home_Test</router-link> |
+    <router-link to="/TEST_About">About_Test</router-link> |
   </nav>
 
   <!-- Search Bar Button Component -->
@@ -36,6 +38,17 @@
 
 <!-- Search Bar Component -->
 <script setup>
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+// Create Pinia instance
+const pinia = createPinia()
+
+// Use Pinia instance in the app
+const app = createApp(App)
+app.use(pinia)
+
 
 import { ref } from "vue";
 
