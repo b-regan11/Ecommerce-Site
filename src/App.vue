@@ -3,7 +3,7 @@
   <nav>
     <router-link to="/about">About</router-link> |
     <router-link to="/">Home</router-link> |
-    <router-link to="/all">Products</router-link> | 
+    <router-link to="/all">Products</router-link> 
   </nav>
 
   <!-- Search Bar Button Component -->
@@ -15,19 +15,19 @@
     <!-- Search Bar Component -->
     <div class="SearchBar">
         <div class="SearchBarInput">
-          <input type="text" v-model="input" placeholder="Search ..." @keyup.enter="onButtonClick"/>
+          <input type="text" v-model="inputText" placeholder="Search ..." @keyup.enter="onButtonClick"/>
         </div>
       <div class="SearchBarResults">
-        <div v-if="input.trim()">
-          <div class="item product" v-for="product in filteredList()" :key="product">
+        <div v-if="storeProductList.search_text.trim()">
+          <div class="item product" v-for="product in storeProductList.filter_products" :key="product.id">
             <a :href="product.path"><p>{{ product.name }}</p></a>
           </div>
-          <div class="item error" v-if="input&&!filteredList().length">
+          <div class="item error" v-if="storeProductList.search_text && !storeProductList.filtered_products.length">
             <p>No Results Found</p>
-            <!--<br><br><br><br><br>-->
+            <br><br><br><br><br>
           </div>
         </div>
-        <div class="item empty" v-if="!input.trim()"></div>
+        <div class="item empty" v-if="!storeProductList.search_text.trim()"></div>
       </div>
     </div>
   </div>
@@ -36,82 +36,30 @@
 
 <!-- Search Bar Component -->
 <script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
 
-import { ref } from "vue";
+// Create Pinia instance
+const pinia = createPinia()
 
-let input = ref("");
-const products = [
-  { 
-    id: 1,
-    name: "Amazon Fire TV", 
-    fullName: "Amazon Fire TV 50 inch 4-Series 4K UHD smart TV, stream live TV without cable",
-    brand: "Amazon",
-    category: "electronics",
-    path: "/firetv", 
-    description: "Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.", 
-    imagePath: "/ProductImages/Electronics/FireTV.jpg", 
-    imageAlt: "Amazon Fire TV",
-    price: 450
-  },
-  { 
-    id: 2,
-    name: "Gatorade Bottle", 
-    fullName: "Gatorade Gx, Marble Blue, 30 Oz",
-    brand: "Gatorade",
-    category: "outdoors",
-    path: "/gatoradebottle", 
-    description: "Fuel your game with Gatorades new customizable hydration platform.", 
-    imagePath: "/ProductImages/Outdoors/GatoradeBottle.jpg", 
-    imageAlt: "Gatorade Bottle",
-    price: 25
-  },
-  { 
-    id: 3,
-    name: "Pedestal Fan", 
-    fullName: "Amazon Basics Oscillating Dual Blade Standing Pedestal Fan with Remote, 16-Inch, Black",
-    brand: "Amazon",
-    category: "office",
-    path: "pedestalfan", 
-    description: "Standing pedestal dual-blade fan with wide oscillation for circulating air in medium to large rooms.", 
-    imagePath: "/ProductImages/Office/PedestalFan.jpg", 
-    imageAlt: "Pedestal Fan",
-    price: 50
-  },
-  { 
-    id: 4,
-    name: "Playstation 5", 
-    fullName: "PlayStation 5 Digital Edition Slim",
-    brand: "Sony",
-    category: "videogames",
-    path: "/PS5", 
-    description: "Bundle includes Marvels Spider-Man 2 full game digital voucher.", 
-    imagePath: "/ProductImages/VideoGames/PS5.jpg", 
-    imageAlt: "Playstation 5 Bundle",
-    price: 450
-  }
-]
-function filteredList() {
-  const slicedProducts = products.filter((product) =>
-  product.name.toLowerCase().includes(input.value.toLowerCase()) ||
-    product.category.toLowerCase().includes(input.value.toLowerCase()) ||
-    product.fullName.toLowerCase().includes(input.value.toLowerCase()) ||
-    product.brand.toLowerCase().includes(input.value.toLowerCase())
-  );
-  return slicedProducts.slice(0, 3);
-}
+// Use Pinia instance in the app
+const app = createApp(App)
+app.use(pinia)
 
-
+import { ref } from 'vue'
 // Search Bar Button Component
 import router from "@/router";
-import Cart from './components/Cart.vue';
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const inputText = ref('');
 
 function onButtonClick() {
-// set item / route to results page
-sessionStorage.setItem("products", JSON.stringify(products)); // products
-sessionStorage.setItem("searchInput", JSON.stringify(input.value)); // search input
-  router.push({
-    name: "results", 
-  });
+  storeProductList.search_text = inputText.value;
+  router.push('/results');
 }
 
 let isDropdownVisible = ref(false);

@@ -2,67 +2,38 @@
   <div class="results">
     <h1>ShopZone.com</h1>
     <br>
-    <h5>{{ filteredProducts.length }} results for "{{ filterKeyword }}"</h5>
+    <h5>{{ storeProductList.filtered_products.length }} results for "{{ storeProductList.search_text }}"</h5>
+    <!-- <h5>{{ filteredProducts.length }} results for "{{ filterKeyword }}"</h5> -->
     <h2>Search Results</h2>
-
-    <div v-if="filteredProducts && filteredProducts.length > 0">
-      <h3>Found Products:</h3>
-      <div>
-        <div v-for="(product, index) in filteredProducts" :key="index">
-          <!-- Call Image Here-->
-          <a :href="getProductLink(product)">
-            <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
-          </a>
-          <h4><a :href="getProductLink(product)">{{ product.name }}</a></h4>
-          <p>{{ product.description }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div v-else>
-      <p>No products found.</p>
-    </div>
+    <ul style="list-style-type: none;">
+        <li v-for="product in storeProductList.filtered_products" :key="product.id">
+            <br><hr><br>
+            <h4>{{ product.fullName }}</h4>
+            <h3>{{ product.name }}</h3>
+            <a :href="product.path">
+                <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
+            </a>
+            <p>{{ product.description }}</p>
+            <p>$ {{ product.price }}</p>
+            <br>
+        </li>
+      </ul>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      products: [],
-      filterKeyword: this.$route.query.searchInput || "",
-    };
-  },
-  computed: {
-    filteredProducts() {
-      return this.products.filter((product) =>
-        product.name.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
-        product.category.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
-        product.fullName.toLowerCase().includes(this.filterKeyword.toLowerCase()) ||
-        product.brand.toLowerCase().includes(this.filterKeyword.toLowerCase())
-      );
-        
-    },
-  },
-  methods: {
-    getProductLink(product) {
-      // Implement the logic to generate the correct link based on your product data
-      return product.path;
-    },
-  },
-  mounted() {
-    const productsString = sessionStorage.getItem("products");
-    const searchInputString = sessionStorage.getItem("searchInput");
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
 
-    this.products = JSON.parse(productsString) || [];
-    this.filterKeyword = JSON.parse(searchInputString) || "";
-  },
-  watch: {
-    '$route.query.searchInput' (newSearchInput) {
-      this.filterKeyword = newSearchInput || "";
-    },
-  },
-};
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
 </script>
 
 <style>

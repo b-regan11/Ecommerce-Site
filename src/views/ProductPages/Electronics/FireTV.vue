@@ -10,38 +10,12 @@
         <p>Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.</p>
         <a href="https://www.amazon.com/amazon-fire-tv-50-inch-4-series-4k-smart-tv/dp/B0B3GTSQ9Q/ref=sr_1_1_ffob_sspa?crid=1KB0GSIYWMJWH&keywords=tv&qid=1707707517&sprefix=tv%2Caps%2C213&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1" target="_blank">Click For More</a>
     </div>
-    <ButtonCounter />
-    <button @click="add_ToCart(item)">Add to Cart</button>
-    <Cart />
-  </template>
+</template>
   
-  <script setup>
-import addToCart from '@/components/Cart.vue';
+<script>
 
-// Define the product item
-const item = {
-    id: 1,
-    name: "Amazon Fire TV", 
-    fullName: "Amazon Fire TV 50 inch 4-Series 4K UHD smart TV, stream live TV without cable",
-    brand: "Amazon",
-    category: "electronics",
-    path: "/firetv", 
-    description: "Bring movies and shows to life with support for vivid 4K Ultra HD, HDR 10, HLG, and Dolby Digital Plus.", 
-    imagePath: "/ProductImages/Electronics/FireTV.jpg", 
-    imageAlt: "Amazon Fire TV",
-    price: 450
-};
+</script>
 
-function add_ToCart(item) {
-    //items.value.push(item);
-    console.log(item)
-}
+<style>
 
-//import ButtonCounter from '@/components/ButtonCounter.vue'
-
-
-  </script>
-  
-  <style>
-  
-  </style>
+</style>
