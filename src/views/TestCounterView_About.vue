@@ -8,6 +8,7 @@
             {{ storeCounter.$state.count }}
         </button>
     </div>
+    <hr>
 </template>
 
 <script setup>

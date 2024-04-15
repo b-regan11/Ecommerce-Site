@@ -3,56 +3,34 @@
     <h1>ShopZone.com</h1>
     <br>
     <h2>All Products</h2>
-
-    <div>
-      <div v-for="(product, index) in products" :key="index">
-        <!-- Call Image Here-->
-        <a :href="getProductLink(product)">
-          <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
-        </a>
-        <h4><a :href="getProductLink(product)">{{ product.name }}</a></h4>
-        <p>{{ product.description }}</p>
-        <p>$ {{ product.price }}</p>
-      </div>
-    </div>
+      <ul style="list-style-type: none;">
+          <li v-for="product in storeProductList.all_products_info" :key="product.id">
+              <h4>{{ product.name }}</h4>
+              <a :href="product.path">
+                  <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
+              </a>
+              <p>{{ product.description }}</p>
+              <p>$ {{ product.price }}</p>
+          </li>
+      </ul>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      products: [],
-    };
-  },
-  methods: {
-    getProductLink(product) {
-      // Implement the logic to generate the correct link based on your product data
-      return product.path;
-    },
-  },
-  mounted() {
-    const productsString = sessionStorage.getItem("products");
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
 
-    this.products = JSON.parse(productsString) || [];
-  },
-};
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
 </script>
 
 <style>
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
-.product-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.product-info {
-  text-align: center;
-}
 </style>

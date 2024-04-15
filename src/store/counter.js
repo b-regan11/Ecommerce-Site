@@ -6,7 +6,10 @@ export const useCounterStore = defineStore({
     state: () => ({
         count: 0
     }),
-    persist: true,
+    persist: {
+        storage: localStorage,
+        paths: ['count'],
+    },
     actions: {
         increaseCount() {
             this.count++
