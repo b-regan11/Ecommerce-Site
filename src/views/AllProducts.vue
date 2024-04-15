@@ -5,12 +5,15 @@
     <h2>All Products</h2>
       <ul style="list-style-type: none;">
           <li v-for="product in storeProductList.all_products_info" :key="product.id">
-              <h4>{{ product.name }}</h4>
+              <br><hr><br>  
+              <h4>{{ product.fullName }}</h4>
+              <h3>{{ product.name }}</h3>
               <a :href="product.path">
                   <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
               </a>
               <p>{{ product.description }}</p>
               <p>$ {{ product.price }}</p>
+              <br>
           </li>
       </ul>
   </div>

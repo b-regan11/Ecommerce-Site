@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 export const useResults = defineStore({
     id: 'products',
     state: () => ({
+        search_text: "",
         products: [
             { 
                 id: 1,
@@ -77,6 +78,15 @@ export const useResults = defineStore({
                 return state.products
             }
             return 'No Product Info Sent'
+        },
+        filtered_products: (state) => {
+            return state.products.filter((product) =>
+                product.name.toLowerCase().includes(state.search_text.toLowerCase()) ||
+                product.fullName.toLowerCase().includes(state.search_text.toLowerCase()) ||
+                product.brand.toLowerCase().includes(state.search_text.toLowerCase()) ||
+                product.category.toLowerCase().includes(state.search_text.toLowerCase()) ||
+                product.description.toLowerCase().includes(state.search_text.toLowerCase())
+            );
         }
     }
 })
