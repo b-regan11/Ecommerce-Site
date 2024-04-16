@@ -1,21 +1,32 @@
 <template>
     <div class="pens">
         <br>
-        <h3>Amazon Basics Retractable Gel Pens, Fine Point (0.7mm), Black, 12 Count (Pack of 1)</h3>
-        <h1>Pens</h1>
-        <a href="https://www.amazon.com/Amazon-Basics-Retractable-Medium-12-Pack/dp/B0BZVGC5TZ?ref_=ast_sto_dp&th=1" target="_blank">
-            <img src="../../../assets/ProductImages/Office/Pens.jpg" alt="Pens" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>Retractable gel pen with no-smear, smudge-free ink for clean, reliable writing.</p>
-        <a href="https://www.amazon.com/Amazon-Basics-Retractable-Medium-12-Pack/dp/B0BZVGC5TZ?ref_=ast_sto_dp&th=1" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(10)
 </script>
-
-<style>
-
-</style>

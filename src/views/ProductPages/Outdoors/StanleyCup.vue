@@ -1,21 +1,32 @@
 <template>
     <div class="stanleycup">
         <br>
-        <h3>Stanley IceFlow Stainless Steel Tumbler with Straw, Vacuum Insulated Water Bottle for Home, Office or Car, Reusable Cup with Straw Leak Resistant Flip</h3>
-        <h1>Stanley Cup</h1>
-        <a href="https://www.amazon.com/Stanley-IceFlow-Stainless-Steel-Tumbler/dp/B0CSF47VXR/ref=sr_1_4?c=ts&keywords=Water%2BBottles&qid=1707769333&s=sporting-goods&sr=1-4&ts_id=3395091&th=1" target="_blank">
-            <img src="../../../assets/ProductImages/Outdoors/StanleyCup.jpg" alt="Stanley Cup" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>This large tumbler with lid and straw can hold 30 oz of thirst-quenching beverage to power you through your longest days; Perfect for drinking water, smoothies, or iced coffee; Just fill it up and get on with your day.</p>
-        <a href="https://www.amazon.com/Stanley-IceFlow-Stainless-Steel-Tumbler/dp/B0CSF47VXR/ref=sr_1_4?c=ts&keywords=Water%2BBottles&qid=1707769333&s=sporting-goods&sr=1-4&ts_id=3395091&th=1" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(17)
 </script>
-
-<style>
-
-</style>

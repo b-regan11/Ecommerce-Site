@@ -13,7 +13,7 @@
             <a :href="product.path">
                 <img :src="require(`@/assets${product.imagePath}`)" :alt="product.imageAlt" style="width: 200px">
             </a>
-            <p>{{ product.description }}</p>
+            <p>{{ product.short_description }}</p>
             <p>$ {{ product.price }}</p>
             <br>
         </li>

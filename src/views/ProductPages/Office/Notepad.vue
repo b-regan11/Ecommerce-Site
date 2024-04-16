@@ -1,21 +1,32 @@
 <template>
     <div class="notepad">
         <br>
-        <h3>Amazon Basics Wide Ruled Lined Writing Note Pad, 8.5 inch x 11.75 inch, Canary, 600 Sheets ( 12 Pack of 50 )</h3>
-        <h1>Writing Notepad</h1>
-        <a href="https://www.amazon.com/Amazon-Basics-11-75-Inch-50-Sheet-Writing/dp/B00QSR9KFU?ref_=ast_sto_dp&th=1" target="_blank">
-            <img src="../../../assets/ProductImages/Office/Notepad.jpg" alt="Writing Notepad" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>12-pack of 50-sheet note pads with letter-size 15-pound Canary paper; ideal for everyday use at home, school, or office.</p>
-        <a href="https://www.amazon.com/Amazon-Basics-11-75-Inch-50-Sheet-Writing/dp/B00QSR9KFU?ref_=ast_sto_dp&th=1" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(8)
 </script>
-
-<style>
-
-</style>

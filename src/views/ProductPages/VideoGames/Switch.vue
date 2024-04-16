@@ -1,21 +1,32 @@
 <template>
     <div class="switch">
         <br>
-        <h3>Nintendo Switch - OLED Model w/ Neon Red & Neon Blue Joy-Con</h3>
-        <h1>Nintendo Switch OLED</h1>
-        <a href="https://www.amazon.com/Nintendo-Switch-OLED-Model-Neon-Joy/dp/B098RL6SBJ/ref=sr_1_2?crid=3F2MLD4C2KEX&keywords=nintendo+switch&qid=1707771764&sprefix=nint%2Caps%2C193&sr=8-2 " target="_blank">
-            <img src="../../../assets/ProductImages/VideoGames/Switch.jpg" alt="Nintendo Switch OLED" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>The Nintendo Switch is a hybrid video game console, consisting of a console unit, a dock, and two Joy-Con controllers.</p>
-        <a href="https://www.amazon.com/Nintendo-Switch-OLED-Model-Neon-Joy/dp/B098RL6SBJ/ref=sr_1_2?crid=3F2MLD4C2KEX&keywords=nintendo+switch&qid=1707771764&sprefix=nint%2Caps%2C193&sr=8-2 " target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(21)
 </script>
-
-<style>
-
-</style>

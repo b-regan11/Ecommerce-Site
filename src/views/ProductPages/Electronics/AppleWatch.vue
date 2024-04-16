@@ -1,21 +1,32 @@
 <template>
     <div class="applewatch">
         <br>
-        <h3>Apple Watch Ultra 2 [GPS + Cellular 49mm] Smartwatch with Rugged Titanium Case & Blue Ocean Band. Fitness Tracker, Precision GPS, Action Button, Extra-Long Battery Life, Bright Retina Display</h3>
-        <h1>Apple Watch Ultra 2</h1>
-        <a href="https://www.amazon.com/Apple-Cellular-Smartwatch-Precision-Extra-Long/dp/B0CHWZ5VVM?ref_=ast_sto_dp&th=1&psc=1" target="_blank">
-            <img src="../../../assets/ProductImages/Electronics/AppleWatch.jpg" alt="Apple Watch Ultra 2" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>Custom Apple silicon makes Apple Watch Ultra 2 more capable, easier to use, and faster.</p>
-        <a href="https://www.amazon.com/Apple-Cellular-Smartwatch-Precision-Extra-Long/dp/B0CHWZ5VVM?ref_=ast_sto_dp&th=1&psc=1" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(4)
 </script>
-
-<style>
-
-</style>

@@ -1,21 +1,32 @@
 <template>
     <div class="ipad">
         <br>
-        <h3>Apple iPad Pro 12.9-inch (6th Generation): with M2 chip, Liquid Retina XDR Display, 128GB, Wi-Fi 6E, 12MP front/12MP and 10MP Back Cameras, Face ID, All-Day Battery Life - Space Gray</h3>
-        <h1>Apple iPad Pro</h1>
-        <a href="https://www.amazon.com/Apple-12-9-inch-iPad-Pro-Wi-Fi-128GB/dp/B0BJLF2BRM?ref_=ast_sto_dp&th=1&psc=1https://www.amazon.com/Apple-12-9-inch-iPad-Pro-Wi-Fi-128GB/dp/B0BJLF2BRM?ref_=ast_sto_dp&th=1&psc=1" target="_blank">
-            <img src="../../../assets/ProductImages/Electronics/AppleiPad.jpg" alt="Apple iPad Pro" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>iPad makes editing, enjoying, and sharing your photos and videos easy.</p>
-        <a href="https://www.amazon.com/Apple-12-9-inch-iPad-Pro-Wi-Fi-128GB/dp/B0BJLF2BRM?ref_=ast_sto_dp&th=1&psc=1https://www.amazon.com/Apple-12-9-inch-iPad-Pro-Wi-Fi-128GB/dp/B0BJLF2BRM?ref_=ast_sto_dp&th=1&psc=1" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(2)
 </script>
-
-<style>
-
-</style>

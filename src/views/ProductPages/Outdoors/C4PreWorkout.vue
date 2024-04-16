@@ -1,21 +1,32 @@
 <template>
     <div class="c4preworkout">
         <br>
-        <h3>C4 Original Pre Workout Powder Fruit Punch - Vitamin C for Immune Support - Sugar Free Preworkout Energy for Men & Women - 150mg Caffeine + Beta Alanine + Creatine - 60 Servings</h3>
-        <h1>C4 Pre-Workout Powder</h1>
-        <a href="https://www.amazon.com/Cellucor-Original-Supplement-Creatine-Citrulline/dp/B00U464HYK?pf_rd_p=b197b67d-b48b-48b3-bc24-3dc96ca0fe14&pf_rd_r=NNCXH13W0QAKV5JNYEM0&ref_=so_exfit_win_vitamins_B00U464HYK" target="_blank">
-            <img src="../../../assets/ProductImages/Outdoors/C4.jpg" alt="C4 Pre-Workout Powder" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>Formulated with a super creatine compound to support strength and performance. Whether you're just starting your fitness journey or striving for a new goal, C4 will help unlock your full potential.</p>
-        <a href="https://www.amazon.com/Cellucor-Original-Supplement-Creatine-Citrulline/dp/B00U464HYK?pf_rd_p=b197b67d-b48b-48b3-bc24-3dc96ca0fe14&pf_rd_r=NNCXH13W0QAKV5JNYEM0&ref_=so_exfit_win_vitamins_B00U464HYK" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(14)
 </script>
-
-<style>
-
-</style>

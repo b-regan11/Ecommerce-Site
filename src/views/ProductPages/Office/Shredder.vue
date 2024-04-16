@@ -1,21 +1,32 @@
 <template>
     <div class="shredder">
         <br>
-        <h3>Amazon Basics Cross Cut Paper and Credit Card Shredder, 12 Sheet (New Model), Black</h3>
-        <h1>Paper Shredder</h1>
-        <a href="https://www.amazon.com/Amazon-Basics-12-Sheet-Cross-Cut-Shredder/dp/B0C6LZG69W?ref_=ast_sto_dp&th=1&psc=1" target="_blank">
-            <img src="../../../assets/ProductImages/Office/PaperShredder.jpg" alt="Paper Shredder" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>Shreds up to 12 sheets of 20-pound bond paper at a time, also can shred credit cards (one at a time, but not suitable for metal credit cards), staples, and small paper clips.</p>
-        <a href="https://www.amazon.com/Amazon-Basics-12-Sheet-Cross-Cut-Shredder/dp/B0C6LZG69W?ref_=ast_sto_dp&th=1&psc=1" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(9)
 </script>
-
-<style>
-
-</style>

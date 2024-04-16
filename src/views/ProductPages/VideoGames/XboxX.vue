@@ -1,21 +1,32 @@
 <template>
     <div class="xbox">
         <br>
-        <h3>Xbox Series X 1TB SSD Console - Includes Wireless Controller - Up to 120 frames per second - 16GB RAM 1TB SSD - Experience True 4K Gaming Velocity Architecture [video game] [video game] [video game] [video game]</h3>
-        <h1>Xbox Series X</h1>
-        <a href="https://www.amazon.com/Xbox-1TB-SSD-Console-Controller-Architecture/dp/B08H75RTZ8/ref=sr_1_3?crid=1VA8UJYGCQKZX&keywords=xbox+series+x&qid=1707771801&sprefix=xbox%2Caps%2C176&sr=8-3" target="_blank">
-            <img src="../../../assets/ProductImages/VideoGames/Xbox.jpg" alt="Xbox Series X" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p></p>
-        <a href="https://www.amazon.com/Xbox-1TB-SSD-Console-Controller-Architecture/dp/B08H75RTZ8/ref=sr_1_3?crid=1VA8UJYGCQKZX&keywords=xbox+series+x&qid=1707771801&sprefix=xbox%2Caps%2C176&sr=8-3" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(23)
 </script>
-
-<style>
-
-</style>

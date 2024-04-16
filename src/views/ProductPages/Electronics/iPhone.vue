@@ -1,21 +1,32 @@
 <template>
     <div class="iphone">
         <br>
-        <h3>Apple iPhone 15 Pro (128 GB) - Natural Titanium | [Locked] | Boost Infinite plan required starting at $60/mo. | Unlimited Wireless | No trade-in needed to start | Get the latest iPhone every year</h3>
-        <h1>Apple iPhone 15 Pro</h1>
-        <a href="https://www.amazon.com/dp/B0CHBMRD1G?ref=boost_bsp_iphone" target="_blank">
-            <img src="../../../assets/ProductImages/Electronics/AppleiPhone.jpg" alt="Apple iPhone 15 Pro" style="width: 300px">
+        <h3>{{ storeProductList.specificProduct.fullName }}</h3>
+        <h1>{{ storeProductList.specificProduct.name }}</h1>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <img :src="require(`@/assets${storeProductList.specificProduct.imagePath}`)" :alt="storeProductList.specificProduct.imageAlt" style="width: 300px">
         </a>
+        <p>{{ storeProductList.specificProduct.short_description }}</p>
+        <p>{{ storeProductList.specificProduct.full_description }}</p>
+        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
         
-        <p>The innovative new design features back glass that has color infused throughout the material.</p>
-        <a href="https://www.amazon.com/dp/B0CHBMRD1G?ref=boost_bsp_iphone" target="_blank">Click For More</a>
     </div>
-</template>
-  
-<script>
+  </template>
 
+<script setup>
+import { useResults } from '@/store/results'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+const storeProductList = useResults()
+app.use(storeProductList)
+
+const pinia = createPinia()
+app.use(pinia)
+
+storeProductList.changeJobId(3)
 </script>
-
-<style>
-
-</style>

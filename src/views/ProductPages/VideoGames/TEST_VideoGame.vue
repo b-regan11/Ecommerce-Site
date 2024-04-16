@@ -1,5 +1,6 @@
+<!-- This should be PS5 but require less typing -->
 <template>
-    <div class="chair">
+    <div class="ps5">
         <br>
         <h3>{{ storeProductList.specificProduct.fullName }}</h3>
         <h1>{{ storeProductList.specificProduct.name }}</h1>
@@ -28,5 +29,5 @@ app.use(storeProductList)
 const pinia = createPinia()
 app.use(pinia)
 
-storeProductList.changeJobId(7)
+storeProductList.changeJobId(22)
 </script>
