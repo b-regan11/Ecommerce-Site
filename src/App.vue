@@ -3,7 +3,8 @@
   <nav>
     <router-link to="/about">About</router-link> |
     <router-link to="/">Home</router-link> |
-    <router-link to="/all">Products</router-link> 
+    <router-link to="/all">Products</router-link> |
+    <router-link to="/cart">Cart</router-link>
   </nav>
 
   <!-- Search Bar Button Component -->
@@ -37,6 +38,7 @@
 <!-- Search Bar Component -->
 <script setup>
 import { useResults } from '@/store/results'
+import { useCart } from '@/store/cart'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from '@/App.vue'
@@ -54,6 +56,9 @@ import router from "@/router";
 
 const storeProductList = useResults()
 app.use(storeProductList)
+
+const storeCartList = useCart()
+app.use(storeCartList)
 
 const inputText = ref('');
 

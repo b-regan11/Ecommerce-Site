@@ -8,16 +8,24 @@
         </a>
         <p>{{ storeProductList.specificProduct.short_description }}</p>
         <p>{{ storeProductList.specificProduct.full_description }}</p>
-        <h4>$ {{ storeProductList.specificProduct.price }}</h4>
-        <a :href="storeProductList.specificProduct.web_link" target="_blank">Click For More</a>
+        <h4>
+            $ {{ storeProductList.specificProduct.price }}
+        </h4>
+        <button @click="addToCart">
+            <h4>Add to Cart</h4>
+        </button>
+        <a :href="storeProductList.specificProduct.web_link" target="_blank">
+            <h4>Click For More</h4>
+        </a>
         
     </div>
   </template>
 
 <script setup>
+import { useCart } from '@/store/cart'
 import { useResults } from '@/store/results'
 import { createPinia } from 'pinia'
-import { createApp } from 'vue'
+import { createApp, provide } from 'vue'
 import App from '@/App.vue'
 
 const app = createApp(App)
@@ -25,8 +33,17 @@ const app = createApp(App)
 const storeProductList = useResults()
 app.use(storeProductList)
 
+const storeCartList = useCart()
+app.use(storeCartList)
+
 const pinia = createPinia()
 app.use(pinia)
 
 storeProductList.changeJobId(22)
+
+function addToCart() {
+    // console.log('Product added to cart!');
+    storeCartList.addToCart(storeProductList.specificProduct)
+}
+
 </script>

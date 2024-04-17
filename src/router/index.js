@@ -3,8 +3,7 @@ import HomeView from '../views/Home.vue'
 import AboutView from '../views/AboutView.vue'
 import AllProductsView from '../views/AllProducts.vue'
 import SearchResultsView from '../views/SearchResults.vue'
-
-import TestView from '../views/ProductPages/VideoGames/TEST_VideoGame.vue'
+import CartView from '../views/Cart.vue'
 
 import FireTVView from '../views/ProductPages/Electronics/FireTV.vue'
 import AirPodsView from '../views/ProductPages/Electronics/AirPods.vue'
@@ -41,9 +40,8 @@ const routes = [
   { path: '/about', name: 'about', component: AboutView },
   { path: '/all', name: 'allproducts', component: AllProductsView },
   { path: '/results', name: 'results', component: SearchResultsView, props: true },
+  { path: '/cart', name: 'cart', component: CartView },
 
-  { path: '/test', name: 'test', component: TestView },
-  
   { path: '/firetv', name: 'firetv', component: FireTVView },
   { path: '/airpods', name: 'airpods', component: AirPodsView },
   { path: '/ipad', name: 'ipad', component: iPadView },
