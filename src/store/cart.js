@@ -1,17 +1,13 @@
+import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 
-export const useCart = defineStore({
-    id: 'cart',
+export const useCart = defineStore("cart", {
     state: () => ({
-        itemsInCart: []
+        itemsInCart: useLocalStorage('cart'),
     }),
-    persist: {
-        storage: localStorage,
-        paths: ['cart'],
-    },
     actions: {
         addToCart(item) {
-            this.itemsInCart.push(item)
+            this.itemsInCart = [item]
         }
     },
     getters: {

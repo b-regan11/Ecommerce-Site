@@ -14,6 +14,10 @@
         <button @click="addToCart">
             <h4>Add to Cart</h4>
         </button>
+        <br>
+        <button @click="clearCart">
+            <h4>Clear Cart</h4>
+        </button>
         <a :href="storeProductList.specificProduct.web_link" target="_blank">
             <h4>Click For More</h4>
         </a>
@@ -24,26 +28,25 @@
 <script setup>
 import { useCart } from '@/store/cart'
 import { useResults } from '@/store/results'
-import { createPinia } from 'pinia'
-import { createApp, provide } from 'vue'
-import App from '@/App.vue'
-
-const app = createApp(App)
 
 const storeProductList = useResults()
-app.use(storeProductList)
 
 const storeCartList = useCart()
-app.use(storeCartList)
 
-const pinia = createPinia()
-app.use(pinia)
 
 storeProductList.changeJobId(22)
 
 function addToCart() {
-    // console.log('Product added to cart!');
     storeCartList.addToCart(storeProductList.specificProduct)
+    // localStorage.setItem('cart', '')
+    // localStorage.removeItem('cart')
+    // localStorage.removeItem('debug')
+    
+}
+
+function clearCart() {
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart', '')
 }
 
 </script>

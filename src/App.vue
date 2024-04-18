@@ -33,32 +33,21 @@
     </div>
   </div>
   <router-view/>
+  <!-- Side Note: This is where I could put footers... -->
 </template>
 
 <!-- Search Bar Component -->
 <script setup>
 import { useResults } from '@/store/results'
 import { useCart } from '@/store/cart'
-import { createPinia } from 'pinia'
-import { createApp } from 'vue'
-import App from '@/App.vue'
-
-// Create Pinia instance
-const pinia = createPinia()
-
-// Use Pinia instance in the app
-const app = createApp(App)
-app.use(pinia)
-
 import { ref } from 'vue'
+
 // Search Bar Button Component
 import router from "@/router";
 
 const storeProductList = useResults()
-app.use(storeProductList)
 
 const storeCartList = useCart()
-app.use(storeCartList)
 
 const inputText = ref('');
 
@@ -72,7 +61,6 @@ let isDropdownVisible = ref(false);
 function toggleDropdown() {
   isDropdownVisible.value = !isDropdownVisible.value;
 }
-
 </script>
 
 <style>

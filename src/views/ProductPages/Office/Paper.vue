@@ -16,17 +16,8 @@
 
 <script setup>
 import { useResults } from '@/store/results'
-import { createPinia } from 'pinia'
-import { createApp } from 'vue'
-import App from '@/App.vue'
-
-const app = createApp(App)
 
 const storeProductList = useResults()
-app.use(storeProductList)
 
-const pinia = createPinia()
-app.use(pinia)
-
-storeProductList.changeJobId(22)
+storeProductList.changeJobId(11)
 </script>
