@@ -1,6 +1,7 @@
-# ecommerce-site
-
+# ShopZone.com
 ## Project setup
+
+### Node Setup
 ```
 npm install
 ```

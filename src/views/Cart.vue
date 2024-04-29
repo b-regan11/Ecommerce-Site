@@ -7,6 +7,7 @@
                     <button @click="buyCart()">Purchase Cart</button>
                     <button @click="clearCart()">Clear Cart</button>
                 </h4>
+                <br>
                 <ul class="product-list" style="list-style-type: none;">
                     <li v-for="item in storeCartList.all_items" :key="item.id">
                         <div class="product-item">
