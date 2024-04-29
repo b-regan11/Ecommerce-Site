@@ -11,13 +11,10 @@
         <h4>
             $ {{ storeProductList.specificProduct.price }}
         </h4>
-        <button @click="addToCart">
+        <button @click="addToCart(storeProductList.specificProduct)">
             <h4>Add to Cart</h4>
         </button>
         <br>
-        <button @click="clearCart">
-            <h4>Clear Cart</h4>
-        </button>
         <a :href="storeProductList.specificProduct.web_link" target="_blank">
             <h4>Click For More</h4>
         </a>
@@ -30,23 +27,12 @@ import { useCart } from '@/store/cart'
 import { useResults } from '@/store/results'
 
 const storeProductList = useResults()
-
 const storeCartList = useCart()
-
 
 storeProductList.changeJobId(22)
 
-function addToCart() {
-    storeCartList.addToCart(storeProductList.specificProduct)
-    // localStorage.setItem('cart', '')
-    // localStorage.removeItem('cart')
-    // localStorage.removeItem('debug')
-    
-}
-
-function clearCart() {
-    localStorage.removeItem('cart')
-    localStorage.setItem('cart', '')
+function addToCart(product) {
+    storeCartList.addToCart(product)
 }
 
 </script>

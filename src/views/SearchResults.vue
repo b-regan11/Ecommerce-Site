@@ -15,6 +15,9 @@
             </a>
             <p>{{ product.short_description }}</p>
             <p>$ {{ product.price }}</p>
+            <button @click="addToCart(product.id)">
+                <h4>Add to Cart</h4>
+              </button>
             <br>
         </li>
       </ul>
@@ -22,9 +25,17 @@
 </template>
 
 <script setup>
+import { useCart } from '@/store/cart'
 import { useResults } from '@/store/results'
 
+const storeCartList = useCart()
 const storeProductList = useResults()
+
+function addToCart(num) {
+  storeProductList.changeJobId(num)
+  storeCartList.addToCart(storeProductList.specificProduct) 
+}
+
 </script>
 
 <style>

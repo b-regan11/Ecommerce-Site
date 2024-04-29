@@ -370,7 +370,6 @@ export const useResults = defineStore({
             );
         },
         specificProduct: (state) => {
-            // return state.products.find(product => product.id === state.job_id);
             return state.products[state.job_id]
         }
     }

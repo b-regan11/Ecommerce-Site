@@ -15,9 +15,16 @@
                         </a>
                         <p>{{ item.short_description }}</p>
                         <p>$ {{ item.price }}</p>
+                        <h4>Quantity: {{ item.quantity }}</h4>
+                        <button @click="removeFromCart(item.id)">
+                            <h4>Remove From Cart</h4>
+                        </button> 
                         <br>
                     </li>
                 </ul>
+                <button @click="clearCart()">
+                    <h4>Clear Cart</h4>
+                </button>
             </template>
             <template v-else>
                 <br><hr><br>
@@ -29,7 +36,18 @@
 
 <script setup>
 import { useCart } from '@/store/cart'
+import { useResults } from '@/store/results'
 import ErrorBoundary from '@/views/ErrorBoundary.vue'
 
 const storeCartList = useCart()
+const storeProductList = useResults()
+
+function removeFromCart(num) {
+    storeProductList.changeJobId(num)
+    storeCartList.removeFromCart(storeProductList.specificProduct)
+}
+
+function clearCart() {
+    storeCartList.clearCart()
+}
 </script>
