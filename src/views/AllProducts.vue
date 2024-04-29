@@ -1,9 +1,7 @@
 <template>
   <div class="allproducts">
-    <h1>ShopZone.com</h1>
-    <br>
-    <h2>All Products</h2>
-    <br><hr><br>  
+    <h2 class="WebName">All Products</h2>
+    <br><hr><br>
       <ul class="product-list" style="list-style-type: none;">
           <li v-for="product in storeProductList.all_products_info" :key="product.id">
             <div class="product-item">
@@ -55,5 +53,13 @@ function addToCart(num) {
 
 .product-item img {
   max-width: 100%;
+}
+
+.WebName {
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 </style>

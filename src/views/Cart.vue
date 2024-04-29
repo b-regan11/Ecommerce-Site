@@ -1,10 +1,12 @@
 <template>
     <ErrorBoundary>
         <div>
-            <h1>ShopZone.com</h1>
-            <br>
-            <h2>Shopping Cart</h2>
+            <h2 class="WebName">Shopping Cart</h2>
             <template v-if="storeCartList.itemsInCart.length > 0">
+                <h4 class="Cart-Options">
+                    <button @click="buyCart()">Purchase Cart</button>
+                    <button @click="clearCart()">Clear Cart</button>
+                </h4>
                 <ul class="product-list" style="list-style-type: none;">
                     <li v-for="item in storeCartList.all_items" :key="item.id">
                         <div class="product-item">
@@ -23,11 +25,6 @@
                         </div>
                     </li>
                 </ul>
-                <h4>
-                    <button @click="clearCart()">Clear Cart</button>
-                     | 
-                    <button @click="buyCart()">Purchase Cart</button>
-                </h4>
             </template>
             <template v-else>
                 <br><hr><br>
@@ -81,5 +78,25 @@ function buyCart() {
 
 .product-item img {
   max-width: 100%;
+}
+
+.WebName {
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.Cart-Options {
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.Cart-Options button {
+  margin: 0 10px;
 }
 </style>

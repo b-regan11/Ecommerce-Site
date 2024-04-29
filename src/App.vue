@@ -2,7 +2,7 @@
   <div class="app-container">
     <!-- Navigation Bar Component -->
     <nav class="nav-bar">
-      <router-link to="/about">About</router-link> |
+      <!-- <router-link to="/about">About</router-link> | -->
       <router-link to="/">Home</router-link> |
       <router-link to="/all">Products</router-link> |
       <router-link to="/cart">Cart</router-link>
@@ -24,7 +24,8 @@
         <div class="item empty" v-else></div>
       </div>
     </div>
-
+    <h1 class="WebName">ShopZone.com</h1>
+    <br>
     <router-view/>
 
     <!-- Side Note: This is where I could put footers... -->
@@ -65,7 +66,8 @@ function onButtonClick() {
 body {
   padding: 20px;
   min-height: 100vh;
-  background-color: rgb(234, 242, 255);
+  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(234, 242, 255); */
 }
 
 .item {
@@ -104,6 +106,10 @@ a:hover {
   display: none;
 }
 
+.error {
+  display: none;
+}
+
 .nav-bar {
   display: flex;
   justify-content: right; 
@@ -115,6 +121,7 @@ a:hover {
   padding-right: 20px;
 }
 
+/* Style for the search button */
 .search-container {
   display: grid;
   grid-template-columns: auto 1fr; 
@@ -126,6 +133,32 @@ a:hover {
 
 .search-bar {
   width: max-content;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-button {
+  padding: 0px 20px;
+  background-color: #acaacf;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for the search button */
+.search-button:hover {
+  background-color: #7e8fff;
+}
+
+.WebName {
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+  font-weight: 500;
 }
 
 /* Media query for screens smaller than 768px */

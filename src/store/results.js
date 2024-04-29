@@ -4,6 +4,7 @@ export const useResults = defineStore({
     id: 'products',
     state: () => ({
         search_text: "",
+        category_text: "",
         job_id: 0,
         products: [
             { 
@@ -367,6 +368,11 @@ export const useResults = defineStore({
                 product.brand.toLowerCase().includes(state.search_text.toLowerCase()) ||
                 product.category.toLowerCase().includes(state.search_text.toLowerCase()) ||
                 product.short_description.toLowerCase().includes(state.search_text.toLowerCase())
+            );
+        },
+        category_products: (state) => {
+            return state.products.filter((product) =>
+                product.category.toLowerCase().includes(state.category_text.toLowerCase())
             );
         },
         specificProduct: (state) => {

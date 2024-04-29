@@ -1,9 +1,7 @@
 <template>
   <div class="results">
-    <h1>ShopZone.com</h1>
-    <br>
-    <h5>{{ storeProductList.filtered_products.length }} results for "{{ storeProductList.search_text }}"</h5>
-    <h2>Search Results</h2>
+    <h5 class="result-count">{{ storeProductList.filtered_products.length }} results for "{{ storeProductList.search_text }}"</h5>
+    <h2 class="WebName">Search Results</h2>
     <br><hr><br>  
     <ul class="product-list" style="list-style-type: none;">
         <li v-for="product in storeProductList.filtered_products" :key="product.id">
@@ -56,5 +54,20 @@ function addToCart(num) {
 
 .product-item img {
   max-width: 100%;
+}
+
+.WebName {
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.result-count {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 </style>

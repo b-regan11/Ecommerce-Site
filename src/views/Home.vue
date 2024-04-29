@@ -1,12 +1,10 @@
 <template>
   <div class="home">
-    <h1>ShopZone.com</h1>
-    <br>    
-    <h2>Home</h2>
+    <h2 class="WebName">Home</h2>
     <p>Free shipping on millions of items. Get the best of Shopping and Entertainment. Enjoy low prices and great deals on the largest selection of stuff.</p>
     <p>Go to our Products page to find all of our products!</p>
     <br>
-    <!-- Photo Gallery -->
+    <!-- VideoGames Photo Gallery -->
     <div class="container">
       <div class="slider">
         <img id="img-1" src="../assets/ProductImages/VideoGames/PS5.jpg" alt="PS5">
@@ -109,6 +107,14 @@ export default {
 .active,
 .dot:hover {
   background-color: #717171;
+}
+
+.WebName {
+  padding-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 </style>
