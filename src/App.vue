@@ -1,39 +1,34 @@
 <template>
-  <!-- Navigation Bar Component -->
-  <nav>
-    <router-link to="/about">About</router-link> |
-    <router-link to="/">Home</router-link> |
-    <router-link to="/all">Products</router-link> |
-    <router-link to="/cart">Cart</router-link>
-  </nav>
-
-  <!-- Search Bar Button Component -->
-  <div class="SearchComponents">
-    <div class="SearchButton">
-      <button @click="onButtonClick">Search</button>
-    </div>
+  <div class="app-container">
+    <!-- Navigation Bar Component -->
+    <nav class="nav-bar">
+      <router-link to="/about">About</router-link> |
+      <router-link to="/">Home</router-link> |
+      <router-link to="/all">Products</router-link> |
+      <router-link to="/cart">Cart</router-link>
+    </nav>
 
     <!-- Search Bar Component -->
-    <div class="SearchBar">
-        <div class="SearchBarInput">
-          <input type="text" v-model="inputText" placeholder="Search ..." @keyup.enter="onButtonClick"/>
-        </div>
-      <div class="SearchBarResults">
-        <div v-if="storeProductList.search_text.trim()">
+    <div class="search-container">
+      <button class="search-button" @click="onButtonClick">Search</button>
+      <div class="search-bar">
+        <input type="text" v-model="inputText" placeholder="Search ..." @keyup.enter="onButtonClick"/>
+        <div class="search-results" v-if="storeProductList.search_text.trim()">
           <div class="item product" v-for="product in storeProductList.filter_products" :key="product.id">
             <a :href="product.path"><p>{{ product.name }}</p></a>
           </div>
           <div class="item error" v-if="storeProductList.search_text && !storeProductList.filtered_products.length">
             <p>No Results Found</p>
-            <br><br><br><br><br>
           </div>
         </div>
-        <div class="item empty" v-if="!storeProductList.search_text.trim()"></div>
+        <div class="item empty" v-else></div>
       </div>
     </div>
+
+    <router-view/>
+
+    <!-- Side Note: This is where I could put footers... -->
   </div>
-  <router-view/>
-  <!-- Side Note: This is where I could put footers... -->
 </template>
 
 <!-- Search Bar Component -->
@@ -46,7 +41,6 @@ import { ref } from 'vue'
 import router from "@/router";
 
 const storeProductList = useResults()
-
 const storeCartList = useCart()
 
 const inputText = ref('');
@@ -56,11 +50,6 @@ function onButtonClick() {
   router.push('/results');
 }
 
-let isDropdownVisible = ref(false);
-
-function toggleDropdown() {
-  isDropdownVisible.value = !isDropdownVisible.value;
-}
 </script>
 
 <style>
@@ -77,20 +66,6 @@ body {
   padding: 20px;
   min-height: 100vh;
   background-color: rgb(234, 242, 255);
-}
-
-input {
-  display: block;
-  width: 350 px;
-  margin-left: auto;
-  padding: 10px 45px;
-  background: white url("assets/search-icon.svg") no-repeat 15px center;
-  background-size: 15px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .item {
@@ -114,12 +89,6 @@ input {
   color: navy;
 }
 
-.product {
-  background-color: rgb(97, 62, 252);
-  cursor: pointer;
-  float: right;
-}
-
 a {
   text-decoration: none;
 }
@@ -131,43 +100,47 @@ a:hover {
   text-decoration: none;
 }
 
-.error {
-  display: none;
-}
-
 .empty {
   display: none;
 }
 
-.SearchBarComponents {
-  width: 100%;
-  position: relative;
-}
-
-.SearchButton {
-  width: 60%;
-  height: 50px;
-  float: right;
-  
-}
-
-.SearchBar {
-  position: relative;
-  width: 40%;
-  height: 50px;
+.nav-bar {
+  display: flex;
+  justify-content: right; 
+  align-items: right;
+  gap: 10px; 
+  margin: 0; 
+  width: 50%;
   float: left;
-  
+  padding-right: 20px;
 }
 
-.SearchBarResults {
-  position: absolute;
-  top: calc(100% - 0px); 
-  left: 100%;
-  transform: translateX(-50%);
-  width: calc(100% + 100px);
-  max-height: 300px;
-  overflow-y: auto;
-  z-index: 9999;
-  background-color:teal ;
+.search-container {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  gap: 10px; 
+  margin: 0; 
+  width: 50%;
+  float: right;
+}
+
+.search-bar {
+  width: max-content;
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 620px) {
+  .nav-bar {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .search-container {
+    padding-top: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
 }
 </style>

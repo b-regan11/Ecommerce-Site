@@ -5,26 +5,29 @@
             <br>
             <h2>Shopping Cart</h2>
             <template v-if="storeCartList.itemsInCart.length > 0">
-                <ul style="list-style-type: none;">
+                <ul class="product-list" style="list-style-type: none;">
                     <li v-for="item in storeCartList.all_items" :key="item.id">
-                        <br><hr><br>
-                        <h4>{{ item.fullName }}</h4>
-                        <h3>{{ item.name }}</h3>
-                        <a :href="item.path">
-                            <img :src="require(`@/assets${item.imagePath}`)" :alt="item.imageAlt" style="width: 200px">
-                        </a>
-                        <p>{{ item.short_description }}</p>
-                        <p>$ {{ item.price }}</p>
-                        <h4>Quantity: {{ item.quantity }}</h4>
-                        <button @click="removeFromCart(item.id)">
-                            <h4>Remove From Cart</h4>
-                        </button> 
-                        <br>
+                        <div class="product-item">
+                            <h4>{{ item.fullName }}</h4>
+                            <h3>{{ item.name }}</h3>
+                            <a :href="item.path">
+                                <img :src="require(`@/assets${item.imagePath}`)" :alt="item.imageAlt" style="width: 200px">
+                            </a>
+                            <p>{{ item.short_description }}</p>
+                            <p>$ {{ item.price }}</p>
+                            <h4>Quantity: {{ item.quantity }}</h4>
+                            <button @click="removeFromCart(item.id)">
+                                <h4>Remove From Cart</h4>
+                            </button> 
+                            <br>
+                        </div>
                     </li>
                 </ul>
-                <button @click="clearCart()">
-                    <h4>Clear Cart</h4>
-                </button>
+                <h4>
+                    <button @click="clearCart()">Clear Cart</button>
+                     | 
+                    <button @click="buyCart()">Purchase Cart</button>
+                </h4>
             </template>
             <template v-else>
                 <br><hr><br>
@@ -50,4 +53,33 @@ function removeFromCart(num) {
 function clearCart() {
     storeCartList.clearCart()
 }
+
+function buyCart() {
+    // Construct a string containing item names and quantities
+    const itemsInCartString = storeCartList.all_items.map(item => `${item.name} (Quantity: ${item.quantity})`).join("\n");
+    
+    // Show an alert with the item names and quantities
+    alert(`Items in Cart:\n${itemsInCartString}`);
+    clearCart()
+}
 </script>
+
+<style>
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Set the grid to automatically fill columns with a minimum width of 250px */
+  gap: 20px; /* Gap between grid items */
+  padding: 0;
+  margin: 0;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-item img {
+  max-width: 100%;
+}
+</style>

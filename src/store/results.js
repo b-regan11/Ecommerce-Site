@@ -331,7 +331,7 @@ export const useResults = defineStore({
             {
                 id: 23,
                 name: "Xbox Series X",
-                fullName: "Xbox Series X 1TB SSD Console - Includes Wireless Controller - Up to 120 frames per second - 16GB RAM 1TB SSD - Experience True 4K Gaming Velocity Architecture [video game] [video game] [video game] [video game]",
+                fullName: "Xbox Series X 1TB SSD Console - Includes Wireless Controller - Up to 120 frames per second - 16GB RAM 1TB SSD - Experience True 4K Gaming Velocity Architecture.",
                 brand: "Xbox",
                 category: "VideoGames",
                 path: "/xbox", 
