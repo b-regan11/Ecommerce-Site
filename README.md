@@ -1,5 +1,8 @@
 # ShopZone.com
 ShopZone is an Business to Consumer (B2C) Ecommerce Platform. This platform is a place for consumers to purchase electronics, office supplies, sports equipment and more!
+### Live Link
+>**https://b-regan11.github.io/Ecommerce-Site/**
+
 ## Project setup
 ### Node Setup
 Visit https://nodejs.org/en/download to install Node.js
