@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/Home.vue'
 import AboutView from '../views/AboutView.vue'
-import AllProductsView from '../views/AllProducts.vue'
+import HomeView from '../views/HomeView.vue'
 import SearchResultsView from '../views/SearchResults.vue'
 import CartView from '../views/Cart.vue'
 
@@ -38,7 +37,6 @@ import XboxXView from '../views/ProductPages/VideoGames/XboxX.vue'
 const routes = [
   { path: '/', name: 'home', component: HomeView },
   { path: '/about', name: 'about', component: AboutView },
-  { path: '/all', name: 'allproducts', component: AllProductsView },
   { path: '/results', name: 'results', component: SearchResultsView, props: true },
   { path: '/cart', name: 'cart', component: CartView },
 

@@ -3,8 +3,8 @@
     <!-- Navigation Bar Component -->
     <nav class="nav-bar">
       <!-- <router-link to="/about">About</router-link> | -->
+      <router-link to="/about">About</router-link> |
       <router-link to="/">Home</router-link> |
-      <router-link to="/all">Products</router-link> |
       <router-link to="/cart">Cart</router-link>
     </nav>
 

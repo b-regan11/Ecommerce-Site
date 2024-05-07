@@ -1,5 +1,5 @@
 <template>
-  <div class="allproducts">
+  <div class="home">
     <h2 class="WebName">All Products</h2>
     <br><hr><br>
       <ul class="product-list" style="list-style-type: none;">
