@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h2 class="WebName">About</h2>
+    <h2 class="WebName">About Us</h2>
     <p class="Description">
       Welcome to ShopZone, your ultimate destination for all things tech, gaming, productivity, and adventure! At ShopZone, we're passionate about providing you with top-quality products and exceptional customer service to enhance every aspect of your life.
       <br><br>
